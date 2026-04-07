@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+
+  /* Theme mapped to Blue & White with colorful accents */
+  /* nature-green -> Primary Blue */
+  --color-nature-green: #2563eb;
+  --color-nature-green-light: #3b82f6;
+  --color-nature-green-dark: #1e3a8a;
+  
+  /* warm-cream -> White / Off-white */
+  --color-warm-cream: #ffffff;
+  --color-warm-cream-dark: #f8fafc;
+  
+  /* accent-gold -> Vibrant Accent (Amber/Gold for pop) */
+  --color-accent-gold: #f59e0b;
+  --color-accent-gold-light: #fbbf24;
+  
+  /* earth-brown -> Dark Slate for text */
+  --color-earth-brown: #334155;
+  --color-earth-brown-light: #64748b;
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-warm-cream text-earth-brown antialiased selection:bg-nature-green selection:text-white;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif text-nature-green-dark;
+  }
+}
+
+/* Custom scrollbar for a premium feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-warm-cream;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-nature-green/50 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-nature-green;
+}
