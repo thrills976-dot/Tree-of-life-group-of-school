@@ -17,7 +17,7 @@ const navLinks = [
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [logoUrl, setLogoUrl] = useState<string | null>(null);
+  const [imgError, setImgError] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -25,13 +25,6 @@ export default function Navigation() {
       setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
-    
-    // Load logo from localStorage
-    const savedLogo = localStorage.getItem("schoolLogo");
-    if (savedLogo) {
-      setLogoUrl(savedLogo);
-    }
-    
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -53,8 +46,13 @@ export default function Navigation() {
         <div className="flex items-center gap-4">
           <Link to="/" className="relative z-50 flex items-center gap-3 group">
             <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-nature-green-dark overflow-hidden border-2 border-accent-gold shadow-md">
-              {logoUrl ? (
-                <img src={logoUrl} alt="School Logo" className="w-full h-full object-contain p-1 bg-white" />
+              {!imgError ? (
+                <img 
+                  src="/logo.png" 
+                  alt="School Logo" 
+                  className="w-full h-full object-contain p-1 bg-white"
+                  onError={() => setImgError(true)}
+                />
               ) : (
                 <motion.div
                   whileHover={{ scale: 1.1, rotate: 5 }}

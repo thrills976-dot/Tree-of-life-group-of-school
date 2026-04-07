@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import { Facebook, Instagram, Twitter, MapPin, Phone, Mail } from "lucide-react";
+import { useState } from "react";
 
 export default function Footer() {
+  const [imgError, setImgError] = useState(false);
+
   return (
     <footer className="bg-nature-green-dark text-warm-cream pt-20 pb-10">
       <div className="container mx-auto px-6 md:px-12">
@@ -9,8 +12,17 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-6">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-accent-gold flex items-center justify-center text-nature-green-dark">
-                <span className="font-serif font-bold text-xl">T</span>
+              <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-nature-green-dark overflow-hidden border-2 border-accent-gold shadow-md">
+                {!imgError ? (
+                  <img 
+                    src="/logo.png" 
+                    alt="School Logo" 
+                    className="w-full h-full object-contain p-1 bg-white"
+                    onError={() => setImgError(true)}
+                  />
+                ) : (
+                  <span className="font-serif font-bold text-2xl text-nature-green-dark">T</span>
+                )}
               </div>
               <div className="flex flex-col">
                 <span className="font-serif font-bold text-xl leading-tight text-white">
