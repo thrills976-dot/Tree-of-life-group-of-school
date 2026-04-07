@@ -48,7 +48,7 @@ export default function Navigation() {
             <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-nature-green-dark overflow-hidden border-2 border-accent-gold shadow-md">
               {!imgError ? (
                 <img 
-                  src="/logo.png" 
+                  src="/images/logo.png" 
                   alt="School Logo" 
                   className="w-full h-full object-contain p-1 bg-white"
                   onError={() => setImgError(true)}
